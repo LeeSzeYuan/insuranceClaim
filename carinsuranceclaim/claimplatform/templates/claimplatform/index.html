@@ -12,12 +12,12 @@
 
         <!-- CSS -->
         <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
-        <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
-        
-        <link rel="stylesheet" href="{% static 'assets/font-awesome/css/font-awesome.min.css'%}">
+        <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.css' %}">
 		<link rel="stylesheet" href=" {% static 'assets/css/form-elements.css'  %}">
         <link rel="stylesheet" href="{% static 'assets/css/style.css'  %}">
+       
 
+ 
 
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -27,156 +27,248 @@
         <![endif]-->
         
         <!-- Favicon and touch icons -->
+        
         <link rel="shortcut icon" href="{% static 'assets/ico/favicon.png'%}">
         <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{% static 'assets/ico/apple-touch-icon-144-precomposed.png' %}">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href=" {% static 'assets/ico/apple-touch-icon-114-precomposed.png' %}">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{% static 'assets/ico/apple-touch-icon-72-precomposed.png' %}">
         <link rel="apple-touch-icon-precomposed" href="{% static 'assets/ico/apple-touch-icon-57-precomposed.png' %}">
+        <script src="https://kit.fontawesome.com/bf1fe3d857.js" crossorigin="anonymous"></script>
 
+        <link rel="stylesheet" href="{% static 'assets/style.css'%}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+        <script>// Initialize and add the map
+            function initMap() {
+              // The location of Uluru
+              const uluru = { lat: -25.344, lng: 131.036 };
+              // The map, centered at Uluru
+              const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 4,
+                center: uluru,
+              });
+              // The marker, positioned at Uluru
+              const marker = new google.maps.Marker({
+                position: uluru,
+                map: map,
+              });
+            }</script>
+     
+       
     </head>
 
     <body>
-
-
-        <!-- Top content -->
-        
-                
                 <div class="row">
+                    
                     <div class="col-sm-7 col-sm-offset-1 col-md-6 col-md-offset-2 col-lg-6 col-lg-offset-3 form-box">
-                    	<form role="form" action="" method="post" class="f1">
+                    	<form class="f1">	
+                            {% csrf_token %}
 
                     		<h3>Claim for car insurance</h3>
                     		<p>Fill in the form to get instant claim</p>
+                       
                     		<div class="f1-steps">
-                    			<div class="f1-progress">
-                    			    <div class="f1-progress-line" data-now-value="12" data-number-of-steps="5" style="width: 12%;"></div>
+
+                    		   <div class="f1-progress">
+                    			    <div class="f1-progress-line" data-now-value="9" data-number-of-steps="6" style="width: 10%;"></div>
                     			</div>
                              
-   
                     			<div class="f1-step active">
                     				<div class="f1-step-icon"><i class="fa fa-car"></i></div>
-                    				<p>about</p>
+                    			</div>
+
+                                <div class="f1-step">
+                    				<div class="f1-step-icon"><i class="fas fa-car-crash"></i></div>
                     			</div>
                                 
                     			<div class="f1-step">
                     				<div class="f1-step-icon"><i class="fa fa-calendar"></i></div>
-                    				<p>account</p>
                     			</div>
 
-                    			<div class="f1-step">
+                                <div class="f1-step">
                     				<div class="f1-step-icon"><i class="fa fa-map-marker"></i></div>
-                    				<p>social</p>
                     			</div>
 
                                 <div class="f1-step">
                     				<div class="f1-step-icon"><i class="fa fa-camera"></i></div>
-                    				<p>social</p>
                     			</div>
 
                     		    <div class="f1-step">
                     				<div class="f1-step-icon"><i class="fa fa-wrench"></i></div>
-                    				<p>social</p>
                     			</div>
                                 
                     		</div>
+                        
+
+                            <!--form 1-->
                     		
                     		<fieldset>
-                    		    <h4>Tell us who you are:</h4>
-                    			<div class="form-group">
-                    			    <label class="sr-only" for="f1-first-name">First name</label>
-                                    <input type="text" name="f1-first-name" placeholder="First name..." class="f1-first-name form-control" id="f1-first-name">
-                                </div>
-                                <div class="form-group">
-                                    <label class="sr-only" for="f1-last-name">Last name</label>
-                                    <input type="text" name="f1-last-name" placeholder="Last name..." class="f1-last-name form-control" id="f1-last-name">
-                                </div>
-                                <div class="form-group">
-                                    <label class="sr-only" for="f1-about-yourself">About yourself</label>
-                                    <textarea name="f1-about-yourself" placeholder="About yourself..." 
-                                    	                 class="f1-about-yourself form-control" id="f1-about-yourself"></textarea>
-                                </div>
-                                <div class="f1-buttons">
-                                    <button type="button" class="btn btn-next">Next</button>
-                                </div>
-                            </fieldset>
+                    		    <h3 style="text-align:center ;color: black;font-size: 20px;padding: 20px;">Which vehicle had been damaged?</h3>
+                    		 <div class="form-group container">
+                                <button class="button button1" type="button">
+                                <div><i class="fa fa-car"></i></div>
+                                <p> {{ vehicle_model }}</p>
+                                <p>{{ vehicle_registration_number  }}</p>
+                                <p>Year:{{ vehicle_year  }}</p>
+                                <p>Insurance ID:{{ vehicle_car_insurance_id  }}</p>
+                                </button>
+                                   
 
-                            <fieldset>
-                                <h4>Set up your account:</h4>
-                                <div class="form-group">
-                                    <label class="sr-only" for="f1-email">Email</label>
-                                    <input type="text" name="f1-email" placeholder="Email..." class="f1-email form-control" id="f1-email">
-                                </div>
-                                <div class="form-group">
-                                    <label class="sr-only" for="f1-password">Password</label>
-                                    <input type="password" name="f1-password" placeholder="Password..." class="f1-password form-control" id="f1-password">
-                                </div>
-                                <div class="form-group">
-                                    <label class="sr-only" for="f1-repeat-password">Repeat password</label>
-                                    <input type="password" name="f1-repeat-password" placeholder="Repeat password..." 
-                                                        class="f1-repeat-password form-control" id="f1-repeat-password">
-                                </div>
-                                <div class="f1-buttons">
-                                    <button type="button" class="btn btn-previous">Previous</button>
+                             </div>
+                               
+                                <div class="f1-buttons" style="padding: 30px;">
                                     <button type="button" class="btn btn-next">Next</button>
                                 </div>
                             </fieldset>
+                            <!--form 2-->
                             <fieldset>
-                                <h4>Set up your account:</h4>
-                                <div class="form-group">
-                                    <label class="sr-only" for="f1-email">Email</label>
-                                    <input type="text" name="f1-email" placeholder="Email..." class="f1-email form-control" id="f1-email">
-                                </div>
-                                <div class="form-group">
-                                    <label class="sr-only" for="f1-password">Password</label>
-                                    <input type="password" name="f1-password" placeholder="Password..." class="f1-password form-control" id="f1-password">
-                                </div>
-                                <div class="form-group">
-                                    <label class="sr-only" for="f1-repeat-password">Repeat password</label>
-                                    <input type="password" name="f1-repeat-password" placeholder="Repeat password..." 
-                                                        class="f1-repeat-password form-control" id="f1-repeat-password">
-                                </div>
+                                <h3 style="text-align:center ;color: black;font-size: 20px;padding: 20px;">What Happened?</h3>
                                 <div class="f1-buttons">
+                                    <div class="serv">
+                                        
+                                       <div>
+                                        <button class="iconbtn"><i class="fa fa-home fa-3x"></i><p style="font-weight: 2px;">Collision With another vehicle</p></button>
+                                       </div>
+                                       <div><button class="iconbtn"><i class="fa fa-home fa-3x"></i><p style="font-weight: 2px;">Collision with 2+ vehicle</p></button></div>
+                                       <div><button class="iconbtn"><i class="fa fa-home fa-3x"></i><p style="font-weight: 2px;">Theft</p></button></div>
+                                       <div><button class="iconbtn"><i class="fa fa-home fa-3x"></i><p style="font-weight: 2px;">Partial Theft</p></button></div>
+                                       <div><button class="iconbtn"><i class="fa fa-home fa-3x"></i><p style="font-weight: 2px;">Fire</p></button></div>
+                                       <div><button class="iconbtn"><i class="fa fa-home fa-3x"></i><p style="font-weight: 2px;">Loss of control</p></button></div>
+                                       <div><button class="iconbtn"><i class="fa fa-home fa-3x"></i><p style="font-weight: 2px;">object/animal collision</p></button></div>
+                                       <div><button class="iconbtn"><i class="fa fa-home fa-3x"></i><p style="font-weight: 2px;">broken glass</p></button></div>
+                                       <div><button class="iconbtn"><i class="fa fa-home fa-3x"></i><p style="font-weight: 2px;">Wheather Damage</p></button></div>
+                                       <div><button class="iconbtn"><i class="fa fa-home fa-3x"></i><p style="font-weight: 2px;">Vandalism</p></button></div>
+                                       <div><button class="iconbtn"><i class="fa fa-home fa-3x"></i><p style="font-weight: 2px;">Collision with pedestrain</p></button></div>
+                                       <div><button class="iconbtn"><i class="fa fa-home fa-3x"></i><p style="font-weight: 2px;">Damage from cargo</p></button></div>
+                                    
+                                      
+                                    
+                                </div>
+                                <button type="button" class="btn btn-previous">Previous</button>
+                                    <button type="button" class="btn btn-next">Next</button>
+                            </fieldset>
+                             <!--form 3-->
+                            <fieldset>
+                            
+                                <div class="f1-buttons">
+                                    <h3 style="text-align:center ;color: black;font-size: 20px;padding: 20px;">When is it ?</h3>
+                                    <main class="container">
+                                        <header class="col-sm-12">
+                            
+                                            
+                                        </header>
+                                        <section class="col-sm-12">
+                                            <div class="form-group">
+                                                <div class='input-group date' id='datetimepicker1'>
+                                                    <input type='text' class="form-control" />
+                                                
+                                                    <span class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                
+                                        </section>
+                                        <footer>
+                                
+                                        </footer>
+                                    </main>
+                                    <script type="text/javascript">
+                                        $(function() {
+                                            $('#datetimepicker1').datetimepicker();
+                                        });
+                                    </script>
                                     <button type="button" class="btn btn-previous">Previous</button>
                                     <button type="button" class="btn btn-next">Next</button>
                                 </div>
                             </fieldset>
                             
-
+                            <!--form 4-->
                             <fieldset>
-                                <h4>Social media profiles:</h4>
-                                <div class="form-group">
-                                    <label class="sr-only" for="f1-facebook">Facebook</label>
-                                    <input type="text" name="f1-facebook" placeholder="Facebook..." class="f1-facebook form-control" id="f1-facebook">
+                               
+                                <div class="f1-buttons">
+                                    <h3>My Google Maps Demo</h3>
+                                    <!--The div element for the map -->
+                                    <div id="map">       
+                                    <script async
+                                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMFAHaLXuu8OP10hXNy3YjAS1srW9oL3U&callback=initMap">
+                                    </script>
+                                    </div>
+                                
+                                    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+                             
+                                    <button type="button" class="btn btn-previous">Previous</button>
+                                    <button type="button" class="btn btn-next">Next</button>
                                 </div>
-                                <div class="form-group">
-                                    <label class="sr-only" for="f1-twitter">Twitter</label>
-                                    <input type="text" name="f1-twitter" placeholder="Twitter..." class="f1-twitter form-control" id="f1-twitter">
-                                </div>
-                                <div class="form-group">
-                                    <label class="sr-only" for="f1-google-plus">Google plus</label>
-                                    <input type="text" name="f1-google-plus" placeholder="Google plus..." class="f1-google-plus form-control" id="f1-google-plus">
-                                </div>
+                            </fieldset>
+                            <!--form 5-->
+                            <fieldset>
+                         <div>
+                                   
+                                    <div action="/action_page.php">
+                                        <label for="img">Please upload your car photo</label>
+                                        <input type="file" id="img" name="img" accept="image/*">
+                                        <input type="submit">
+                                    </div>
+
+                                      <button id="btn1">CLICK</button> 
+                                    <div id="btn2">
+                                        
+                                      <div action="/action_page.php">
+                                        <label for="img">Please upload your car repair invoice</label>
+                                        <input type="file" id="img" name="img" accept="image/*">
+                                        <input type="submit">
+                                      
+                                      </div>
+                                    </div>
+
+                                      
+                                      
+                                      <div class="f1-buttons">
+                                <button type="button" class="btn btn-previous">Previous</button>
+                                <button type="button" class="btn btn-next">Next</button>
+                                      </div>
+                         </div>
+                         <script>document.querySelector('#btn2').style.display = 'none'; 
+                            document.querySelector('#btn1').addEventListener('click', showBtn); 
+                             
+                            function showBtn(e) { 
+                             document.querySelector('#btn2').style.display = 'block'; 
+                             e.preventDefault(); 
+                            }</script>
+                            </fieldset>
+                            
+                            <!--form 6-->
+                            <fieldset>
                                 <div class="f1-buttons">
                                     <button type="button" class="btn btn-previous">Previous</button>
                                     <button type="submit" class="btn btn-submit">Submit</button>
                                 </div>
                             </fieldset>
                            
-                    	
                     	</form>
+                    
                     </div>
                 </div>
                     
-            </div>
-        </div>  
+           
 
         
         <!-- Javascript -->
-        <script src="{% static 'assets/js/jquery-1.11.1.min.js'  %}"></script>
-        <script src="{% static 'assets/bootstrap/js/bootstrap.min.js'  %}"></script>
-        <script src="{% static 'assets/js/jquery.backstretch.min.js'  %}"></script>
-        <script src="{% static 'assets/js/retina-1.1.0.min.js'  %}"></script>
+        <!-- <script src="{% static 'assets/js/jquery-1.11.1.js'  %}"></script> -->
+        <script src="{% static 'assets/js/jquery.backstretch.js'  %}"></script>
         <script src="{% static 'assets/js/scripts.js'  %}"></script>
+
+        <script> $("#first-button").click(function(){
+            ev.preventDefault();    
+            $('#second-button').removeClass('hide');
+            $('#first-button').addClass('hide');
+            
+          });</script>
         
     
     </body>
