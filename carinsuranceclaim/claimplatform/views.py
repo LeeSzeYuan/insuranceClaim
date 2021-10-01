@@ -56,4 +56,6 @@ def index(request):
         
 
     })
+def table(request):
+  return render(request,"claimplatform/table.html")
 

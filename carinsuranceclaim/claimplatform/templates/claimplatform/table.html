@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <thead>
+            <th>Sno</th>
+            <th>user_id</th>
+            <th>type_of_accidence</th>
+            <th>date_of_accidence</th>
+            <th>accidence_location</th>
+            <th>car_image_url</th>
+            <th>invoice_image_url</th>
+        </thead>
+        <tbody id="tbody1">
+
+
+        </tbody>
+    </table>
+   
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+    <script>
+         var config  = {
+        "apiKey": "AIzaSyBflqWHGwNwcoRtBGKho-4rV83sSDoizgY",
+        "authDomain": "insurtech-hackathonn.firebaseapp.com",
+        "databaseURL": "https://insurtech-hackathonn-default-rtdb.asia-southeast1.firebasedatabase.app",
+        "projectId": "insurtech-hackathonn",
+        "storageBucket": "insurtech-hackathonn.appspot.com",
+        "messagingSenderId": "876544685456",
+        "appId": "1:876544685456:web:17a5d78ec66eb9b6b6af15",
+        }
+        firebase.initializeApp(config);
+
+        function SelectAllData(){
+            firebase.database().ref('claim').on('value',
+            function(AllRecords){
+                AllRecords.forEach(
+                  function(CurrentRecord){
+                      var user_id=CurrentRecord.val().user_id;
+                      var type_of_accidence=CurrentRecord.val().type_of_accidence;
+                      var date_of_accidence=CurrentRecord.val().date_of_accidence;
+                      var accidence_location=CurrentRecord.val().accidence_location;
+                      var car_image_url=CurrentRecord.val().car_url;
+                      var invoice_image_url=CurrentRecord.val().invoice_url;
+                      AddItemstoTable(user_id,
+                        type_of_accidence,
+                        date_of_accidence,
+                        accidence_location,
+                        car_image_url,
+                        invoice_image_url);
+
+                        }
+
+                );
+            });
+        }
+        window.onload=SelectAllData;
+        var stdNo=0;
+        function AddItemstoTable(user_id,type_of_accidence,date_of_accidence,accidence_location,car_image_url,invoice_image_url){
+            var tbody=document.getElementById('tbody1')
+            var trow=document.createElement('tr');
+            var td1=document.createElement('td');
+            var td2=document.createElement('td');
+            var td3=document.createElement('td');
+            var td4=document.createElement('td');
+            var td5=document.createElement('td');
+            var td6=document.createElement('td');
+            var td7=document.createElement('td');
+            td1.innerHTML=++stdNo;
+            td2.innerHTML=user_id;
+            td3.innerHTML=type_of_accidence;
+            td4.innerHTML=date_of_accidence;
+            td5.innerHTML=accidence_location;
+            td6.innerHTML=car_image_url;
+            td7.innerHTML=invoice_image_url;
+            tbody.appendChild(trow);
+            trow.appendChild(td1);
+            trow.appendChild(td2);
+            trow.appendChild(td3);
+            trow.appendChild(td4);
+            trow.appendChild(td5);
+            trow.appendChild(td6);
+            trow.appendChild(td7);
+
+        }
+    </script>
+</body>
+</html>
