@@ -22,7 +22,7 @@
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <a class="navbar-brand" href="#">
                     <img src="https://getbootstrap.com/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
-                    Bootstrap
+                    InsurTech
                 </a>
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
@@ -39,40 +39,107 @@
             </div>
         </nav>
         <br><br>
-        <div class="container border border-3 rounded-3" style="padding: 10px;">
+        <div class="container border border-4 rounded-3" style="padding: 10px;">
             <div class="container">
                 <table class="table table-hover">
-                    <thead>
+                    <thead></thead>
                     <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">First</th>
-                        <th scope="col">Last</th>
-                        <th scope="col">Handle</th>
+                        <th>Sno</th>
+                        <th>user_id</th>
+                        <th>type_of_accidence</th>
+                        <th>date_of_accidence</th>
+                        <th>accidence_location</th>
+                        <th>car_image_url</th>
+                        <th>invoice_image_url</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td><a href="">Mark</a></td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td><a href="">Jacob</a></td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td><a href="">Christy</a></td>
-                        <td>Wee</td>
-                        <td>@twitter</td>
-                    </tr>
+                    <tbody id="tbody1">
+                    
                     </tbody>
                 </table>
             </div>
         </div>
+        <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+        <script>
+             var config  = {
+            "apiKey": "AIzaSyBflqWHGwNwcoRtBGKho-4rV83sSDoizgY",
+            "authDomain": "insurtech-hackathonn.firebaseapp.com",
+            "databaseURL": "https://insurtech-hackathonn-default-rtdb.asia-southeast1.firebasedatabase.app",
+            "projectId": "insurtech-hackathonn",
+            "storageBucket": "insurtech-hackathonn.appspot.com",
+            "messagingSenderId": "876544685456",
+            "appId": "1:876544685456:web:17a5d78ec66eb9b6b6af15",
+            }
+            firebase.initializeApp(config);
+    
+            function SelectAllData(){
+                firebase.database().ref('claim').on('value',
+                function(AllRecords){
+                    AllRecords.forEach(
+                      function(CurrentRecord){
+                          var user_id=CurrentRecord.val().user_id;
+                          var type_of_accidence=CurrentRecord.val().type_of_accidence;
+                          var date_of_accidence=CurrentRecord.val().date_of_accidence;
+                          var accidence_location=CurrentRecord.val().accidence_location;
+                          var car_image_url=CurrentRecord.val().car_url;
+                          var invoice_image_url=CurrentRecord.val().invoice_url;
+                          AddItemstoTable(user_id,
+                            type_of_accidence,
+                            date_of_accidence,
+                            accidence_location,
+                            car_image_url,
+                            invoice_image_url);
+    
+                            }
+    
+                    );
+                });
+            }
+            window.onload=SelectAllData;
+            var stdNo=0;
+            function AddItemstoTable(user_id,type_of_accidence,date_of_accidence,accidence_location,car_image_url,invoice_image_url){
+                var tbody=document.getElementById('tbody1')
+                var trow=document.createElement('tr');
+                var td1=document.createElement('td');
+                var td2=document.createElement('td');
+                var td3=document.createElement('td');
+                var td4=document.createElement('td');
+                var td5=document.createElement('td');
+                var td6=document.createElement('td');
+                var td7=document.createElement('td');
+                var a1 = document.createElement('a'); 
+                var a2 = document.createElement('a'); 
+                var a1 = document.createElement('a');
+                var a2= document.createElement('a');
+                var link1 = document.createTextNode("This is car image link");
+                var link2 = document.createTextNode("This is invoice image link");
+                a1.appendChild(link1); 
+                a1.title = "This is Link"; 
+                a1.href = car_image_url;
+                a2.appendChild(link2); 
+                a2.title = "This is Link"; 
+                a2.href = invoice_image_url; 
+                td1.innerHTML=++stdNo;
+                td2.innerHTML=user_id;
+                td3.innerHTML=type_of_accidence;
+                td4.innerHTML=date_of_accidence;
+                td5.innerHTML=accidence_location;
+                td6.appendChild(a1);
+                td7.appendChild(a2);
+                tbody.appendChild(trow);
+                tbody.appendChild(trow);
+                trow.appendChild(td1);
+                trow.appendChild(td2);
+                trow.appendChild(td3);
+                trow.appendChild(td4);
+                trow.appendChild(td5);
+                trow.appendChild(td6);
+                trow.appendChild(td7);
+    
+            }
+        </script>
 
     </body>
 

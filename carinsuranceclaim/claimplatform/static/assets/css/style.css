@@ -22,7 +22,7 @@ body {
 .f1-progress-line { position: absolute; top: 0; left: 0; height: 1px; background: #f35b3f; }
 
 
-.f1-step { position: relative; float: left; width: 16.66%; padding: 40px 10px; }
+.f1-step { position: relative; float: left; width: 20%; padding: 40px 10px; }
 
 .f1-step-icon {
 	display: inline-block; width: 40px; height: 40px; margin-top: 4px; background: #ddd;
