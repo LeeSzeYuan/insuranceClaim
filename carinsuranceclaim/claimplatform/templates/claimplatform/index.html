@@ -42,22 +42,8 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-        <script>// Initialize and add the map
-            function initMap() {
-              // The location of Uluru
-              const uluru = { lat: -25.344, lng: 131.036 };
-              // The map, centered at Uluru
-              const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 4,
-                center: uluru,
-              });
-              // The marker, positioned at Uluru
-              const marker = new google.maps.Marker({
-                position: uluru,
-                map: map,
-              });
-            }</script>
-     
+        
+      
        
     </head>
 
@@ -65,7 +51,7 @@
                 <div class="row">
                     
                     <div class="col-sm-7 col-sm-offset-1 col-md-6 col-md-offset-2 col-lg-6 col-lg-offset-3 form-box">
-                    	<form class="f1">	
+                    	<form class="f1" method="post" action="post_create/">	
                             {% csrf_token %}
 
                     		<h3>Claim for car insurance</h3>
@@ -109,18 +95,25 @@
                     		<fieldset>
                     		    <h3 style="text-align:center ;color: black;font-size: 20px;padding: 20px;">Which vehicle had been damaged?</h3>
                     		 <div class="form-group container">
-                                <button class="button button1" type="button">
-                                <div><i class="fa fa-car"></i></div>
-                                <p> {{ vehicle_model }}</p>
-                                <p>{{ vehicle_registration_number  }}</p>
-                                <p>Year:{{ vehicle_year  }}</p>
-                                <p>Insurance ID:{{ vehicle_car_insurance_id  }}</p>
-                                </button>
-                                   
-
-                             </div>
                                
-                                <div class="f1-buttons" style="padding: 30px;">
+                                
+                                <input type="radio" class="button button1" name="user_id" value="0"  >
+                                
+                                <label for="" >
+                                    <div><i class="fa fa-car"></i></div>
+                                    <p> {{ vehicle_model }}</p>
+                                    <p>{{ vehicle_registration_number  }}</p>
+                                    <p>Year:{{ vehicle_year  }}</p>
+                                    <p>Insurance ID:{{ vehicle_car_insurance_id  }}</p>
+                                </label>
+                             </div>
+                             
+                      
+                            <br>
+                            <br>
+                            <br>
+                               
+                                <div class="f1-buttons" style="padding: 40px;">
                                     <button type="button" class="btn btn-next">Next</button>
                                 </div>
                             </fieldset>
@@ -129,21 +122,20 @@
                                 <h3 style="text-align:center ;color: black;font-size: 20px;padding: 20px;">What Happened?</h3>
                                 <div class="f1-buttons">
                                     <div class="serv">
-                                        
-                                       <div>
-                                        <button class="iconbtn"><i class="fa fa-home fa-3x"></i><p style="font-weight: 2px;">Collision With another vehicle</p></button>
-                                       </div>
-                                       <div><button class="iconbtn"><i class="fa fa-home fa-3x"></i><p style="font-weight: 2px;">Collision with 2+ vehicle</p></button></div>
-                                       <div><button class="iconbtn"><i class="fa fa-home fa-3x"></i><p style="font-weight: 2px;">Theft</p></button></div>
-                                       <div><button class="iconbtn"><i class="fa fa-home fa-3x"></i><p style="font-weight: 2px;">Partial Theft</p></button></div>
-                                       <div><button class="iconbtn"><i class="fa fa-home fa-3x"></i><p style="font-weight: 2px;">Fire</p></button></div>
-                                       <div><button class="iconbtn"><i class="fa fa-home fa-3x"></i><p style="font-weight: 2px;">Loss of control</p></button></div>
-                                       <div><button class="iconbtn"><i class="fa fa-home fa-3x"></i><p style="font-weight: 2px;">object/animal collision</p></button></div>
-                                       <div><button class="iconbtn"><i class="fa fa-home fa-3x"></i><p style="font-weight: 2px;">broken glass</p></button></div>
-                                       <div><button class="iconbtn"><i class="fa fa-home fa-3x"></i><p style="font-weight: 2px;">Wheather Damage</p></button></div>
-                                       <div><button class="iconbtn"><i class="fa fa-home fa-3x"></i><p style="font-weight: 2px;">Vandalism</p></button></div>
-                                       <div><button class="iconbtn"><i class="fa fa-home fa-3x"></i><p style="font-weight: 2px;">Collision with pedestrain</p></button></div>
-                                       <div><button class="iconbtn"><i class="fa fa-home fa-3x"></i><p style="font-weight: 2px;">Damage from cargo</p></button></div>
+                                        <label for="What Happened?">Choose a type of car accidence:</label>
+                                        <select id="cars" name="cars">
+                                          <option value="Collision With another vehicle">Collision With another vehicle</option>
+                                          <option value="Collision with 2+ vehicle">Collision with 2+ vehicle</option>
+                                          <option value="Theft">Theft</option>
+                                          <option value="Fire">Fire</option>
+                                          <option value="Loss of control">Loss of control</option>
+                                          <option value="object/animal collision">object/animal collision</option>
+                                          <option value="broken glass">broken glass</option>
+                                          <option value="Wheather Damage">Wheather Damage</option>
+                                          <option value="Vandalism">Vandalism</option>
+                                          <option value="Vandalism">Collision with pedestrain</option>
+                                          <option value="Vandalism">Damage from cargo</option>
+                                        </select>
                                     
                                       
                                     
@@ -164,7 +156,7 @@
                                         <section class="col-sm-12">
                                             <div class="form-group">
                                                 <div class='input-group date' id='datetimepicker1'>
-                                                    <input type='text' class="form-control" />
+                                                    <input type='text' class="form-control" name='calendar'>
                                                 
                                                     <span class="input-group-addon">
                                                             <span class="glyphicon glyphicon-calendar"></span>
@@ -189,18 +181,22 @@
                             
                             <!--form 4-->
                             <fieldset>
-                               
+                                <script src="{% static 'assets/js/map.js'  %}"></script>
                                 <div class="f1-buttons">
-                                    <h3>My Google Maps Demo</h3>
-                                    <!--The div element for the map -->
+                                    <h3 style="text-align: center;">Please enter your accident location</h3>
+                                    <input
+                                    id="pac-input"
+                                    class="controls"
+                                    type="text"
+                                    placeholder="Search Box"
+                                    size="50"
+                                    name="location_data"
+                                    />
                                     <div id="map">       
                                     <script async
-                                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMFAHaLXuu8OP10hXNy3YjAS1srW9oL3U&callback=initMap">
+                                        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBMFAHaLXuu8OP10hXNy3YjAS1srW9oL3U&libraries=places&callback=initMap">
                                     </script>
                                     </div>
-                                
-                                    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-                             
                                     <button type="button" class="btn btn-previous">Previous</button>
                                     <button type="button" class="btn btn-next">Next</button>
                                 </div>
@@ -208,46 +204,24 @@
                             <!--form 5-->
                             <fieldset>
                          <div>
-                                   
-                                    <div action="/action_page.php">
                                         <label for="img">Please upload your car photo</label>
-                                        <input type="file" id="img" name="img" accept="image/*">
-                                        <input type="submit">
-                                    </div>
-
-                                      <button id="btn1">CLICK</button> 
-                                    <div id="btn2">
+                                        <input type="file" name="files[]" id="files">
+                                        <input type="hidden" name="url" id="url">
+                                        <button type="button" onclick="uploadimage()" >Upload</button>
+                                   
                                         
-                                      <div action="/action_page.php">
-                                        <label for="img">Please upload your car repair invoice</label>
-                                        <input type="file" id="img" name="img" accept="image/*">
-                                        <input type="submit">
-                                      
-                                      </div>
-                                    </div>
-
-                                      
+                                        <label for="img">Please upload your invoice</label>
+                                        <input type="file" name="invoice_files[]" id="invoice_files">
+                                        <input type="hidden" name="invoice_url" id="invoice_url">
+                                        <button type="button" onclick="upload_invoice_image()" >Upload</button>
+                                     
                                       
                                       <div class="f1-buttons">
                                 <button type="button" class="btn btn-previous">Previous</button>
-                                <button type="button" class="btn btn-next">Next</button>
+                                <button type="submit" class="btn btn-submit">Submit</button>
                                       </div>
                          </div>
-                         <script>document.querySelector('#btn2').style.display = 'none'; 
-                            document.querySelector('#btn1').addEventListener('click', showBtn); 
-                             
-                            function showBtn(e) { 
-                             document.querySelector('#btn2').style.display = 'block'; 
-                             e.preventDefault(); 
-                            }</script>
-                            </fieldset>
-                            
-                            <!--form 6-->
-                            <fieldset>
-                                <div class="f1-buttons">
-                                    <button type="button" class="btn btn-previous">Previous</button>
-                                    <button type="submit" class="btn btn-submit">Submit</button>
-                                </div>
+                       
                             </fieldset>
                            
                     	</form>
@@ -259,16 +233,66 @@
 
         
         <!-- Javascript -->
-        <!-- <script src="{% static 'assets/js/jquery-1.11.1.js'  %}"></script> -->
+     
         <script src="{% static 'assets/js/jquery.backstretch.js'  %}"></script>
         <script src="{% static 'assets/js/scripts.js'  %}"></script>
+        <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>
+        <script>
+           var config  = {
+         "apiKey": "AIzaSyBflqWHGwNwcoRtBGKho-4rV83sSDoizgY",
+         "authDomain": "insurtech-hackathonn.firebaseapp.com",
+        "databaseURL": "https://insurtech-hackathonn-default-rtdb.asia-southeast1.firebasedatabase.app",
+        "projectId": "insurtech-hackathonn",
+        "storageBucket": "insurtech-hackathonn.appspot.com",
+        "messagingSenderId": "876544685456",
+        "appId": "1:876544685456:web:17a5d78ec66eb9b6b6af15",
+        }
+        firebase.initializeApp(config);
+       
 
-        <script> $("#first-button").click(function(){
-            ev.preventDefault();    
-            $('#second-button').removeClass('hide');
-            $('#first-button').addClass('hide');
-            
-          });</script>
+        function uploadimage(){
+        var storage = firebase.storage();
+        var file = document.getElementById("files").files[0];
+        var storageRef = storage.ref();
+        var thisref = storageRef.child(file.name).put(file);
+        thisref.on('state_changed',function(snapshot){
+        console.log("file uploaded succesfully");
+  },
+        function(error) {
+        },
+        function() {
+        // Upload completed successfully, now we can get the download URL
+        var downloadURL = thisref.snapshot.downloadURL;
+        console.log("got url");
+        document.getElementById("url").value = downloadURL;
+        alert("file uploaded successfully");
+});
+    }
+    function upload_invoice_image(){
+        var storage = firebase.storage();
+        var invoice_file = document.getElementById("invoice_files").files[0];
+        var storageRef = storage.ref();
+        var thisref = storageRef.child(invoice_file.name).put(invoice_file);
+        thisref.on('state_changed',function(snapshot){
+        console.log("file uploaded succesfully");
+  },
+        function(error) {
+        },
+        function() {
+        // Upload completed successfully, now we can get the download URL
+        var downloadURL = thisref.snapshot.downloadURL;
+        console.log("got url");
+        document.getElementById("invoice_url").value = downloadURL;
+        alert("file uploaded successfully");
+});
+    }
+    
+
+        
+
+        </script>
+       
+
         
     
     </body>
