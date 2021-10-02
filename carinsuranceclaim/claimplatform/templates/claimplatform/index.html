@@ -51,7 +51,7 @@
         <div class="row">
             
             <div class="col-sm-7 col-sm-offset-1 col-md-6 col-md-offset-2 col-lg-6 col-lg-offset-3 form-box">
-                <form class="f1" method="post" action="post_create/">	
+                <form class="f1" method="post" action="post_create/"  enctype="multipart/form-data">	
                     {% csrf_token %}
 
                     <h3>Claim for car insurance</h3>
@@ -202,7 +202,7 @@
                     <fieldset>
                         <div>
                             <label for="img">Please upload your car photo</label>
-                            <input class="form-control" type="file" name="files[]" id="files" onchange="readURL(this, 'damage_type');">
+                            <input class="form-control" type="file" name="files" id="files" onchange="readURL(this, 'damage_type');">
                             <input type="hidden" name="url" id="url">
                             <img id="damage_type" class="img-thumbnail" src="#" alt="damage_type" style="display: none;"/><br>
                             <button type="button" class="btn btn-warning btn-sm" onclick="uploadimage()" >Upload</button><br>
@@ -210,11 +210,10 @@
                             <hr> 
 
                             <label for="img">Please upload your invoice</label>
-                            <input class="form-control" type="file" name="invoice_files[]" id="invoice_files"  onchange="readURL(this, 'invoice_img');">
+                            <input class="form-control" type="file" name="invoice_files" id="invoice_files"  onchange="readURL(this, 'invoice_img');">
                             <input type="hidden" name="invoice_url" id="invoice_url">
                             <img id="invoice_img" class="img-thumbnail" src="#" alt="invoice_img" style="display: none;"/><br>
                             <button type="button" class="btn btn-warning btn-sm" onclick="upload_invoice_image()" >Upload</button>
-                        
                         
                             <div class="f1-buttons">
                                 <button type="button" class="btn btn-previous">Previous</button>
@@ -266,6 +265,7 @@
                     alert("file uploaded successfully");
                 });
             }
+            
             function upload_invoice_image(){
                 var storage = firebase.storage();
                 var invoice_file = document.getElementById("invoice_files").files[0];
