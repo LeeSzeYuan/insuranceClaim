@@ -11,6 +11,12 @@
         <title>InsurTech</title>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        <style>
+            th {
+                padding: 3px;
+
+            }
+        </style>
     </head>
 
     <body>
@@ -39,16 +45,16 @@
             </div>
         </nav>
         <br><br>
-        <div class="container border border-4 rounded-3" style="padding: 10px;">
-            <div class="container">
+        <div class="container-fluid border border-4 rounded-3">
+            <div class="container" >
                 <table class="table table-hover">
                     <thead></thead>
                     <tr>
-                        <th>Sno</th>
-                        <th>user_id</th>
+                        <th>Claim Number</th>
                         <th>type_of_accidence</th>
                         <th>date_of_accidence</th>
                         <th>accidence_location</th>
+                        <th>user_id</th>
                         <th>car_image_url</th>
                         <th>invoice_image_url</th>
                     </tr>
@@ -85,12 +91,15 @@
                           var accidence_location=CurrentRecord.val().accidence_location;
                           var car_image_url=CurrentRecord.val().car_url;
                           var invoice_image_url=CurrentRecord.val().invoice_url;
-                          AddItemstoTable(user_id,
+                          var claim_number=CurrentRecord.key ;
+
+                          AddItemstoTable(claim_number,
+                            user_id,
                             type_of_accidence,
                             date_of_accidence,
                             accidence_location,
                             car_image_url,
-                            invoice_image_url);
+                            invoice_image_url,claim_number);
     
                             }
     
@@ -98,8 +107,8 @@
                 });
             }
             window.onload=SelectAllData;
-            var stdNo=0;
-            function AddItemstoTable(user_id,type_of_accidence,date_of_accidence,accidence_location,car_image_url,invoice_image_url){
+            
+            function AddItemstoTable(claim_number,user_id,type_of_accidence,date_of_accidence,accidence_location,car_image_url,invoice_image_url){
                 var tbody=document.getElementById('tbody1')
                 var trow=document.createElement('tr');
                 var td1=document.createElement('td');
@@ -109,23 +118,28 @@
                 var td5=document.createElement('td');
                 var td6=document.createElement('td');
                 var td7=document.createElement('td');
-                var a1 = document.createElement('a'); 
-                var a2 = document.createElement('a'); 
-                var a1 = document.createElement('a');
-                var a2= document.createElement('a');
+                var a1 =document.createElement('a'); 
+                var a2 =document.createElement('a'); 
+                var a1 =document.createElement('a');
+                var a2 =document.createElement('a');
+                var a3 =document.createElement('a');
                 var link1 = document.createTextNode("This is car image link");
                 var link2 = document.createTextNode("This is invoice image link");
+                var link3 = document.createTextNode(claim_number);
                 a1.appendChild(link1); 
                 a1.title = "This is Link"; 
                 a1.href = car_image_url;
                 a2.appendChild(link2); 
                 a2.title = "This is Link"; 
                 a2.href = invoice_image_url; 
-                td1.innerHTML=++stdNo;
-                td2.innerHTML=user_id;
-                td3.innerHTML=type_of_accidence;
-                td4.innerHTML=date_of_accidence;
-                td5.innerHTML=accidence_location;
+                a3.appendChild(link3); 
+                a3.title = "This is Link"; 
+                a3.href ="{% url 'index' %}" + claim_number ;
+                td1.appendChild(a3);
+                td2.innerHTML=type_of_accidence;
+                td3.innerHTML=date_of_accidence;
+                td4.innerHTML=accidence_location;
+                td5.innerHTML=user_id;
                 td6.appendChild(a1);
                 td7.appendChild(a2);
                 tbody.appendChild(trow);

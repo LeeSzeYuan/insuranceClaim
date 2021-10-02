@@ -19,22 +19,21 @@ user_id = database.child('vehicle').child('0').get().key()
 
 db=firebase.database()
 
-data ={"name":"Khor y Yi"}
 
 
 
 def post_create(request):
-    user_id= request.POST.get('user_id')
+    insurance_id= request.POST.get('insurance_id')
     type_of_accidence= request.POST.get('cars')
     date_of_accidence= request.POST.get('calendar')
     accidence_location= request.POST.get('location_data')
     url=request.POST.get('url')
     invoice_url=request.POST.get('invoice_url')
     
-    data={"user_id":user_id,"type_of_accidence":type_of_accidence,"date_of_accidence":date_of_accidence,"accidence_location":accidence_location,"car_url":url,"invoice_url":invoice_url}
+    data={"insurance_id":insurance_id,"type_of_accidence":type_of_accidence,"date_of_accidence":date_of_accidence,"accidence_location":accidence_location,"car_url":url,"invoice_url":invoice_url}
     database.child('claim').push(data)
     return render(request,"claimplatform/after_claim.html",{
-      "user_id":user_id,"type_of_accidence":type_of_accidence,"date_of_accidence":date_of_accidence,"accidence_location":accidence_location,"car_url":url,"invoice_url":invoice_url
+      "insurance_id":insurance_id,"type_of_accidence":type_of_accidence,"date_of_accidence":date_of_accidence,"accidence_location":accidence_location,"car_url":url,"invoice_url":invoice_url
     })
 
 
@@ -51,8 +50,9 @@ def index(request):
       "vehicle_registration_number":vehicle_registration_number,
       "vehicle_year":vehicle_year,
       "vehicle_car_insurance_id":vehicle_car_insurance_id,
-      "user_id": user_id
+      "insurance_id": vehicle_car_insurance_id
     })
+    
 def table(request):
   return render(request,"claimplatform/table.html")
 
