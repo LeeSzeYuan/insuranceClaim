@@ -44,7 +44,7 @@ def post_create(request):
     invoice_file = request.FILES["invoice_files"]
     invoice_file_name = default_storage.save(invoice_file.name, invoice_file)
     invoice_file_url = default_storage.path(invoice_file_name)
-
+  
     # ocr_result = ocr(invoice_file_url)
     # similar_image = image_search(url)
     damage(file_url)
