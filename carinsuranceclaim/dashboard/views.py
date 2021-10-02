@@ -56,10 +56,17 @@ def details(request,claim_no):
       "Registration_number":Registration_number,
       "Brand":Brand,
       "Model":Model,
-      "Year":Year,
-      
-      
-      
-       
+      "Year":Year,  
       
     })
+
+
+    
+def get_url(url_type):
+    claim_object=database.child('claim').get().val()
+    lst=[]
+    for key in claim_object:
+          car_photo_url=database.child('claim').child(key).child(url_type).get().val()
+          lst.append(car_photo_url)
+    return lst
+
