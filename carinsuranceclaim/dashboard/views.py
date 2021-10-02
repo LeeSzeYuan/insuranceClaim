@@ -23,6 +23,7 @@ database=firebase.database()
 
 
 def details(request,claim_no):
+
     ClaimNo=database.child('claim').child(claim_no).get().key()
     insurance_id=database.child('claim').child(claim_no).child('insurance_id').get().val()
     user_id=database.child('car_insurance').child(insurance_id).child('user_id').get().val()
@@ -57,9 +58,4 @@ def details(request,claim_no):
       "Brand":Brand,
       "Model":Model,
       "Year":Year,
-      
-      
-      
-       
-      
     })

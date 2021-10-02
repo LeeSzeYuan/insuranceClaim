@@ -4,6 +4,13 @@ from django.core.files.storage import default_storage
 from serpapi import GoogleSearch
 import pyrebase
 import veryfi
+from tensorflow.keras.models import load_model
+from PIL import Image, ImageOps
+import numpy as np
+import tensorflow as tf
+
+
+# model=load_model('.models/keras_model.h5')
 
 config  = {
   "apiKey": "AIzaSyBflqWHGwNwcoRtBGKho-4rV83sSDoizgY",
@@ -40,6 +47,7 @@ def post_create(request):
 
     # ocr_result = ocr(invoice_file_url)
     # similar_image = image_search(url)
+    damage(file_url)
     
     data = {
       "insurance_id":insurance_id, 
@@ -110,3 +118,17 @@ def image_search(img_url):
     results = search.get_dict()
     inline_images = results['inline_images']
     return inline_images[0]
+
+def damage(img_url):
+    # model=load_model('claimplatform/keras_model.h5')
+    data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
+    image = Image.open(img_url)
+    size = (224, 224)
+    image = ImageOps.fit(image, size, Image.ANTIALIAS)
+    #turn the image into a numpy array
+    image_array = np.asarray(image)
+    # Normalize the image
+    normalized_image_array = (image_array.astype(np.float32) / 127.0) - 1
+    # Load the image into the array
+    data[0] = normalized_image_array
+    predictions = model.predict(data)
