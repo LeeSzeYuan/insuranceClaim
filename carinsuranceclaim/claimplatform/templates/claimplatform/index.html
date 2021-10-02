@@ -51,7 +51,7 @@
         <div class="row">
             
             <div class="col-sm-7 col-sm-offset-1 col-md-6 col-md-offset-2 col-lg-6 col-lg-offset-3 form-box">
-                <form class="f1" method="post" action="post_create/"  enctype="multipart/form-data">	
+                <form class="f1" method="post" action="/claimplatform/post_create/"  enctype="multipart/form-data">	
                     {% csrf_token %}
 
                     <h3>Claim for car insurance</h3>
@@ -92,10 +92,8 @@
                     
                     <fieldset>
                         <h3 style="text-align:center ;color: black;font-size: 20px;padding: 20px;">Which vehicle had been damaged?</h3>
-                        <div class="form-group container">
-                        
-                            
-                            <input type="radio" class="button button1" name="insurance_id" value="{{ vehicle_car_insurance_id }}">
+                        <div class=" container" style="background-color: lightgrey;width: fit-content;height: fit-content;border-radius: 10px;" name="mycontainer">
+                            <input type="radio" class="button button1" name="insurance_id" value="{{ vehicle_car_insurance_id }}" >
                             
                             <label for="" >
                                 <div><i class="fa fa-car"></i></div>
@@ -105,7 +103,6 @@
                                 <p>Insurance ID:{{ vehicle_car_insurance_id  }}</p>
                             </label>
                         </div>
-                    
                         <br>
                         <br>
                         <br>

@@ -43,13 +43,13 @@ def post_create(request):
     url = request.POST.get('url')
     invoice_url = request.POST.get('invoice_url')
 
-    file = request.FILES["files"]
-    file_name = default_storage.save(file.name, file)
-    file_url = default_storage.path(file_name)
+    # file = request.FILES["files"]
+    # file_name = default_storage.save(file.name, file)
+    # file_url = default_storage.path(file_name)
 
-    invoice_file = request.FILES["invoice_files"]
-    invoice_file_name = default_storage.save(invoice_file.name, invoice_file)
-    invoice_file_url = default_storage.path(invoice_file_name)
+    # invoice_file = request.FILES["invoice_files"]
+    # invoice_file_name = default_storage.save(invoice_file.name, invoice_file)
+    # invoice_file_url = default_storage.path(invoice_file_name)
   
     # ocr_result = ocr(invoice_file_url)
     # similar_image = image_search(url)
@@ -96,6 +96,20 @@ def index(request):
       "vehicle_car_insurance_id":vehicle_car_insurance_id,
       "insurance_id": vehicle_car_insurance_id
     })
+
+def user(request):
+    vehicle_model = database.child('vehicle').child('1').child('model').get().val()
+    vehicle_registration_number = database.child('vehicle').child('1').child('registration_number').get().val()
+    vehicle_year = database.child('vehicle').child('1').child('year').get().val()
+    vehicle_car_insurance_id = database.child('vehicle').child('1').child('car_insurance_id').get().val()
+
+    return render(request, "claimplatform/index.html",{
+      "vehicle_model":vehicle_model,
+      "vehicle_registration_number":vehicle_registration_number,
+      "vehicle_year":vehicle_year,
+      "vehicle_car_insurance_id":vehicle_car_insurance_id,
+      "insurance_id": vehicle_car_insurance_id
+})
     
 def table(request):
   return render(request,"claimplatform/table.html")
