@@ -20,8 +20,6 @@ firebase=pyrebase.initialize_app(config)
 auth=firebase.auth()
 database=firebase.database()
 
-
-
 def details(request,claim_no):
 
     ClaimNo=database.child('claim').child(claim_no).get().key()
@@ -62,7 +60,7 @@ def details(request,claim_no):
     })
 
 
-    
+
 def get_url(url_type):
     claim_object=database.child('claim').get().val()
     lst=[]
