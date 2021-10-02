@@ -43,16 +43,16 @@ def post_create(request):
     url = request.POST.get('url')
     invoice_url = request.POST.get('invoice_url')
 
-    # file = request.FILES["files"]
-    # file_name = default_storage.save(file.name, file)
-    # file_url = default_storage.path(file_name)
+    file = request.FILES["files"]
+    file_name = default_storage.save(file.name, file)
+    file_url = default_storage.path(file_name)
 
-    # invoice_file = request.FILES["invoice_files"]
-    # invoice_file_name = default_storage.save(invoice_file.name, invoice_file)
-    # invoice_file_url = default_storage.path(invoice_file_name)
+    invoice_file = request.FILES["invoice_files"]
+    invoice_file_name = default_storage.save(invoice_file.name, invoice_file)
+    invoice_file_url = default_storage.path(invoice_file_name)
   
-    # ocr_result = ocr(invoice_file_url)
-    # similar_image = image_search(url)
+    ocr_result = ocr(invoice_file_url)
+    similar_image = image_search(url)
     prediction=damage(file_url)
     
     data = {
@@ -62,8 +62,8 @@ def post_create(request):
       "accidence_location":accidence_location, 
       "car_url":url, 
       "invoice_url":invoice_url,
-      # "ocr_result": ocr_result,
-      # "similar_image": similar_image,
+      "ocr_result": ocr_result,
+      "similar_image": similar_image,
       "prediction": model_class[prediction]
     }
 

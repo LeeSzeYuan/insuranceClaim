@@ -5,8 +5,8 @@ from django.conf.urls.static import static
 from . import views
 
 urlpatterns=[
-    path("user1/",views.index,name="index"),
-    path("user2/",views.user,name="user"),
+    path("user0/",views.index,name="index"),
+    path("user1/",views.user,name="user"),
     path("post_create/",views.post_create,name='post_create'),
     path("table/",views.table,name="table")
 ]
