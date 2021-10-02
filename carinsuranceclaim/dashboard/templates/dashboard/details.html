@@ -19,106 +19,163 @@
         
     }
     body{
-        padding:0;
+        padding:0px;
+        border: 0px;
+        margin: 0px;
     }
     .row{
         padding: 20px;
     }
 </style>
 <body>
-      <nav class="navbar navbar-light"    style="background-color:lightsalmon;">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <img src="https://getbootstrap.com/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
-            &nbsp&nbsp <strong>Insurtech</strong>
-          </a>
+    <nav class="navbar  navbar-dark bg-dark" style="border: 0px; margin: 0px;">
+        <div class="container-fluid" style="border: 0px;">
+            <a class="navbar-brand" href="#">
+                &nbsp&nbsp <strong>DClaim (Digitalised Claim Management System)</strong>
+            </a>
         </div>
-      </nav>
-    <div class="container-fluid">
+    </nav>
+    <div style="padding: 0%; border: 0px;">
         <div class="row">
-            <div class="col-2" style="background-color: rgb(192, 192, 192)    ;">
-             <br>
-             <br>
-             <br>   
-             <br> 
-                <p>  <strong>CLAIM NUMBER:</strong><br>{{ClaimNo}}
+            <div class="col-2" style="background-color: rgba(192, 192, 192, 0.726); border: 0;">
+            <br>
+            <br>
+            <br>   
+            <br> 
+                <p>  <strong>CLAIM ID:</strong><br>{{ClaimNo}}
                 </p> 
                 <p>  <strong>CLIENT NAME:</strong><br>{{NAME}}
                 </p> 
-                <p>  <strong>CLIENT NUMBER:</strong><br>{{CLIENTNUMBER}}
+                <p>  <strong>CLIENT ID:</strong><br>{{CLIENTNUMBER}}
                 </p>
-                <p>  <strong>INSURANCE NUMBER:</strong><br>{{INSURANCENUMBER}}
+                <p>  <strong>INSURANCE ID:</strong><br>{{INSURANCENUMBER}}
                 </p> 
-                <!-- <p>  <strong>DATE OF CLAIM</strong><br> {{DATE_OF_CLAIM}}
-                </p>   -->
-                
             </div>
 
             <div class="col-8" style="background-color:white ;">
-
-                <div class="row ">
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <div class="card-body">
-                            <h5 class="card-title">Driver</h5>
-                            <p class="card-text"> <strong>Name:</strong>&nbsp{{Driver_name}}</p>
-                            <p class="card-text"><strong>Driver Age:</strong>&nbsp{{Driver_age}}</p>
-                            <p class="card-text"><strong>Driver Phone Number:</strong>&nbsp    {{Driver_phone_number}}</p>
-                            <p class="card-text"><strong>Driver Address:</strong><br> {{Driver_address}}</p>
-                                
+                <div class="row">
+                    <div class="row ">
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-body">
+                                <h5 class="card-title">Driver</h5>
+                                <hr>
+                                <p class="card-text"> <strong>Name:</strong>&nbsp{{Driver_name}}</p>
+                                <p class="card-text"><strong>Driver Age:</strong>&nbsp{{Driver_age}}</p>
+                                <p class="card-text"><strong>Driver Phone Number:</strong>&nbsp    {{Driver_phone_number}}</p>
+                                <p class="card-text"><strong>Driver Address:</strong><br> {{Driver_address}}</p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Claim</h5>
+                                    <hr>
+                                    <p class="card-text"> <strong> Date of accidence:</strong>&nbsp{{Date_of_loss}}</p>
+                                    <p class="card-text"><strong> Place of accidence:</strong><br> {{Place_of_loss}}</p>
+                                    <p class="card-text"><strong> Circumstance:</strong>&nbsp{{Circumstance}}</p>
+    
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-6">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Claim</h5>
-                                <p class="card-text"> <strong> Date of accidence:</strong>&nbsp{{Date_of_loss}}</p>
-                                <p class="card-text"><strong> Place of accidence:</strong><br> {{Place_of_loss}}</p>
-                                <p class="card-text"><strong> Circumstance:</strong>&nbsp{{Circumstance}}</p>
-
+    
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                <h5 class="card-title">Vehicle </h5>
+                                <hr>
+                                <p class="card-text"><strong>Registration Number:</strong>&nbsp {{Registration_number}}</p>
+                                    <p class="card-text"><strong>Brand:</strong> &nbsp {{Brand}}</p>
+                                    <p class="card-text"> <strong> Model:</strong>&nbsp {{Model}}</p>
+                                    <p class="card-text"><strong>Year:</strong> &nbsp {{Year}}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6 col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                <h5 class="card-title">Repair</h5>
+                                <hr>
+                                <p class="card-text"><strong>Name:</strong> &nbsp {{ocr_result.vendor.raw_name}}</p>
+                                <p class="card-text"> <strong>Address:</strong>&nbsp {{ocr_result.vendor.address}}</p>
+                                <p class="card-text"><strong>Contact:</strong> &nbsp {{claim_data.ocr_result.vendor.email}}</p>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <div>
+
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <h1>Web Image Detection</h1>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="{{claim_data.car_url}}"><img src="{{claim_data.car_url}}" alt="" class="image-fluid" style="width: 30%; height: 30%;"></a> 
+                                </td>
+                                <td>
+                                    {% if claim_data.similar_image.link %}
+                                        <p> The Image seem to be found on the internet</p>
+                                        <a href="https://google.com{{claim_data.similar_image.link}}">LINK</a>
+                                    {% else %}
+                                        <p>No similar image is found on the internet</p>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    Prediction Result:
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="row">
-                    <div class="col-sm-6 col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                            <h5 class="card-title">Vehicle </h5>
-                            <p class="card-text"><strong>Registration Number:</strong>&nbsp {{Registration_number}}</p>
-                                <p class="card-text"><strong>Brand:</strong> &nbsp {{Brand}}</p>
-                                <p class="card-text"> <strong> Model:</strong>&nbsp {{Model}}</p>
-                                <p class="card-text"><strong>Year:</strong> &nbsp {{Year}}</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-6">
-                        <div class="card">
-                            <div class="card-body">
-                            <h5 class="card-title">Repair</h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                            <p class="card-text">Some quick example text to build on {{Year}}the card title and make up the bulk of the card's content.</p>
-                            <a href="#" class="card-link">Card link</a>
-                            <a href="#" class="card-link">Another link</a>
-                            </div>
-                        </div>
-                    </div>
+                    <h1>OCR Analysis</h1>
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="{{claim_data.invoice_url}}"><img src="{{claim_data.invoice_url}}" alt="" class="image-fluid" style="width: 30%; height: 30%;"></a> 
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><p class="card-text"><strong>Bill To Name:</strong> &nbsp {{ocr_result.bill_to_name}}</p></li>
+                                    </ul>
+                                    <ul>
+                                        <li><p class="card-text"><strong>Bill To Address:</strong> &nbsp {{ocr_result.bill_to_address}}</p></li>
+                                    </ul>
+                                    <ul>
+                                        <li><p class="card-text"><strong>Total Amount:</strong> &nbsp {{ocr_result.total}}</p></li>
+                                    </ul>
+                                    <ul>
+                                        <li><p class="card-text"><strong>Repairer Name:</strong> &nbsp {{ocr_result.vendor.raw_name}}</p></li>
+                                    </ul>
+                                    <ul>
+                                        <li><p class="card-text"> <strong>Repairer Address:</strong>&nbsp {{ocr_result.vendor.address}}</p></li>
+                                    </ul>
+                                    <ul>
+                                        <li><p class="card-text"><strong>Repairer Contact:</strong> &nbsp {{claim_data.ocr_result.vendor.email}}</p></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    if image is reused, show the link of the image and claim number
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+
                 <div class="row">
-                    <div class="col-sm-6 col-md-6">
-                        <div class="card" style="width: 50rem; height:auto">
-                          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo blanditiis quibusdam, perferendis, iure vitae repudiandae hic velit officiis perspiciatis nihil vel pariatur modi maxime. Enim nostrum cupiditate labore sit ipsam!    
-                        </div>
-                    </div>  
-                </div>
-                <div class="row">
-                    <div class="col-sm-6 col-md-6">
-                        <div class="card" style="width: 50rem;height: auto;">
-                          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo blanditiis quibusdam, perferendis, iure vitae repudiandae hic velit officiis perspiciatis nihil vel pariatur modi maxime. Enim nostrum cupiditate labore sit ipsam!    
-                        </div>
-                    </div>  
+                    <h1>Web Image Detection</h1>
+                    fraud result
                 </div>
                 
             </div>

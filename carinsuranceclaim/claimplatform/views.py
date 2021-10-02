@@ -8,9 +8,15 @@ from tensorflow.keras.models import load_model
 from PIL import Image, ImageOps
 import numpy as np
 import tensorflow as tf
+from tensorflow import Graph
 
+model_graph = Graph()
+with model_graph.as_default():
+    tf_session = tf.compat.v1.Session()
+    with tf_session.as_default():
+      model = load_model(default_storage.path("keras_model.h5"))
 
-# model=load_model('.models/keras_model.h5')
+model_class = ["Normal Bumper", "Damaged Bumper", "Normal Windshield", "Damaged Windshield", "Normal Door","Damaged Door"]
 
 config  = {
   "apiKey": "AIzaSyBflqWHGwNwcoRtBGKho-4rV83sSDoizgY",
@@ -47,7 +53,7 @@ def post_create(request):
   
     # ocr_result = ocr(invoice_file_url)
     # similar_image = image_search(url)
-    damage(file_url)
+    prediction=damage(file_url)
     
     data = {
       "insurance_id":insurance_id, 
@@ -57,7 +63,8 @@ def post_create(request):
       "car_url":url, 
       "invoice_url":invoice_url,
       # "ocr_result": ocr_result,
-      # "similar_image": similar_image
+      # "similar_image": similar_image,
+      "prediction": model_class[prediction]
     }
 
     database.child('claim').push(data)
@@ -131,4 +138,7 @@ def damage(img_url):
     normalized_image_array = (image_array.astype(np.float32) / 127.0) - 1
     # Load the image into the array
     data[0] = normalized_image_array
-    predictions = model.predict(data)
+    with model_graph.as_default():
+        with tf_session.as_default():
+          predictions = model.predict(data)
+    return np.argmax(predictions)

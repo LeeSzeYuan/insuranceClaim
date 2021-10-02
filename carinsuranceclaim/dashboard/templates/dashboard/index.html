@@ -27,20 +27,8 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
                 <a class="navbar-brand" href="#">
-                    <img src="https://getbootstrap.com/docs/5.1/assets/brand/bootstrap-logo.svg" alt="" width="30" height="24" class="d-inline-block align-text-top">
-                    InsurTech
+                    DClaim (Digitalised Claim Management System)
                 </a>
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled">Disabled</a>
-                    </li>
-                </ul>
             </div>
             </div>
         </nav>
@@ -53,10 +41,9 @@
                         <th>Claim Number</th>
                         <th>type_of_accidence</th>
                         <th>date_of_accidence</th>
-                        <th>accidence_location</th>
-                        <th>user_id</th>
-                        <th>car_image_url</th>
-                        <th>invoice_image_url</th>
+                        <th>status</th>
+                        <th>prediction</th>
+                        <th>action</th>
                     </tr>
                     </thead>
                     <tbody id="tbody1">
@@ -85,21 +72,26 @@
                 function(AllRecords){
                     AllRecords.forEach(
                       function(CurrentRecord){
-                          var user_id=CurrentRecord.val().user_id;
+                        //   var user_id=CurrentRecord.val().user_id;
                           var type_of_accidence=CurrentRecord.val().type_of_accidence;
                           var date_of_accidence=CurrentRecord.val().date_of_accidence;
                           var accidence_location=CurrentRecord.val().accidence_location;
                           var car_image_url=CurrentRecord.val().car_url;
                           var invoice_image_url=CurrentRecord.val().invoice_url;
-                          var claim_number=CurrentRecord.key ;
-
+                          var claim_status = CurrentRecord.val().claim_status;
+                          var prediction = CurrentRecord.val().prediction;
+                          var claim_number=CurrentRecord.key;
+                          
+                        //   claim_status = "prediction"
                           AddItemstoTable(claim_number,
-                            user_id,
                             type_of_accidence,
                             date_of_accidence,
                             accidence_location,
                             car_image_url,
-                            invoice_image_url,claim_number);
+                            invoice_image_url,
+                            claim_number, 
+                            claim_status, 
+                            prediction);
     
                             }
     
@@ -108,7 +100,7 @@
             }
             window.onload=SelectAllData;
             
-            function AddItemstoTable(claim_number,user_id,type_of_accidence,date_of_accidence,accidence_location,car_image_url,invoice_image_url){
+            function AddItemstoTable(claim_number,type_of_accidence,date_of_accidence,accidence_location,car_image_url,invoice_image_url, claim_status, prediction){
                 var tbody=document.getElementById('tbody1')
                 var trow=document.createElement('tr');
                 var td1=document.createElement('td');
@@ -117,32 +109,17 @@
                 var td4=document.createElement('td');
                 var td5=document.createElement('td');
                 var td6=document.createElement('td');
-                var td7=document.createElement('td');
                 var a1 =document.createElement('a'); 
-                var a2 =document.createElement('a'); 
-                var a1 =document.createElement('a');
-                var a2 =document.createElement('a');
-                var a3 =document.createElement('a');
-                var link1 = document.createTextNode("This is car image link");
-                var link2 = document.createTextNode("This is invoice image link");
-                var link3 = document.createTextNode(claim_number);
+                var link1 = document.createTextNode(claim_number);
                 a1.appendChild(link1); 
-                a1.title = "This is Link"; 
-                a1.href = car_image_url;
-                a2.appendChild(link2); 
-                a2.title = "This is Link"; 
-                a2.href = invoice_image_url; 
-                a3.appendChild(link3); 
-                a3.title = "This is Link"; 
-                a3.href ="{% url 'index' %}" + claim_number ;
-                td1.appendChild(a3);
+                
+                a1.href ="{% url 'index' %}" + claim_number ;
+                td1.appendChild(a1);
                 td2.innerHTML=type_of_accidence;
                 td3.innerHTML=date_of_accidence;
-                td4.innerHTML=accidence_location;
-                td5.innerHTML=user_id;
-                td6.appendChild(a1);
-                td7.appendChild(a2);
-                tbody.appendChild(trow);
+                
+                td4.innerHTML=claim_status;
+                td5.innerHTML=prediction;
                 tbody.appendChild(trow);
                 trow.appendChild(td1);
                 trow.appendChild(td2);
@@ -150,7 +127,6 @@
                 trow.appendChild(td4);
                 trow.appendChild(td5);
                 trow.appendChild(td6);
-                trow.appendChild(td7);
     
             }
         </script>
