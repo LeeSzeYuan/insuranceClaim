@@ -103,6 +103,7 @@
                                 </td>
                                 <td>
                                     <p>{{claim_data.prediction}}</p>
+                                    <p><strong>Confidence Level:</strong> {{confidenc}}%</p>
                                 </td>
                                 <td>
                                     {% if claim_data.type_of_accidence == claim_data.prediction %}
@@ -189,7 +190,10 @@
                                     </ul>
                                 </td>
                                 <td>
-                                    if image is reused, show the link of the image and claim number
+                                    <ul>
+                                        <li><strong>Similar with Previous Claim:</strong>  {{claim_data.similar_claim_id}} </li>
+                                        <li><strong>Invoice Image:</strong> <a href="{{claim_data.similar_claim_url}}">LINK</a> </li>
+                                    </ul>
                                 </td>
                                 <td>
                                     {% if claim_data.similar_image.link == null %}
