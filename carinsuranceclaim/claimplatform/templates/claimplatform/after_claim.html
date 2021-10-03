@@ -37,6 +37,12 @@
         </div>
         </div>
     </nav>
+    {% if claim_status == "approved" %}
+      <h2 style="text-align: center;padding: 90px;">Your claim had been APPROVED. you will get you claim within 30 minutes</h1>
+    {% elif claim_status == "pending" %}
+      <h2 style="text-align: center;padding: 90px;">Your claim had been created. and we are processing </h1>
+    {% endif %}
+
     <h2 style="text-align: center;padding: 90px;">Your claim had been created </h1>
       <table class="table">
         <thead>

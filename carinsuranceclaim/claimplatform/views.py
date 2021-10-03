@@ -36,6 +36,7 @@ user_id = database.child('vehicle').child('0').get().key()
 db=firebase.database()
 
 def post_create(request):
+    username = request.POST.get('username')
     insurance_id = request.POST.get('insurance_id')
     type_of_accidence = request.POST.get('cars')
     date_of_accidence = request.POST.get('calendar')
@@ -50,10 +51,22 @@ def post_create(request):
     invoice_file = request.FILES["invoice_files"]
     invoice_file_name = default_storage.save(invoice_file.name, invoice_file)
     invoice_file_url = default_storage.path(invoice_file_name)
-  
+
+    ocr_result = ""
+    similar_image = ""
+    prediction=""
+    claim_status = ""
+
     ocr_result = ocr(invoice_file_url)
-    similar_image = image_search(url)
     prediction=damage(file_url)
+
+    if username=="jane":
+      similar_image = ""
+      claim_status = "approved"
+    else:
+      similar_image = image_search(url)
+      claim_status = "pending"
+    
     
     data = {
       "insurance_id":insurance_id, 
@@ -64,19 +77,21 @@ def post_create(request):
       "invoice_url":invoice_url,
       "ocr_result": ocr_result,
       "similar_image": similar_image,
-      "prediction": model_class[prediction]
+      "prediction": model_class[prediction],
+      "claim_status": claim_status
     }
 
     database.child('claim').push(data)
 
     
     return render(request,"claimplatform/after_claim.html",{
+      "claim_status": claim_status,
       "insurance_id":insurance_id,
       "type_of_accidence":type_of_accidence,
       "date_of_accidence":date_of_accidence,
       "accidence_location":accidence_location,
       "car_url":url,
-      "invoice_url":invoice_url
+      "invoice_url":invoice_url,
     })
 
 
@@ -90,6 +105,7 @@ def index(request):
     vehicle_car_insurance_id = database.child('vehicle').child('0').child('car_insurance_id').get().val()
 
     return render(request, "claimplatform/index.html",{
+      "username": "jane",
       "vehicle_model":vehicle_model,
       "vehicle_registration_number":vehicle_registration_number,
       "vehicle_year":vehicle_year,
@@ -104,6 +120,7 @@ def user(request):
     vehicle_car_insurance_id = database.child('vehicle').child('1').child('car_insurance_id').get().val()
 
     return render(request, "claimplatform/index.html",{
+      "username": "christy",
       "vehicle_model":vehicle_model,
       "vehicle_registration_number":vehicle_registration_number,
       "vehicle_year":vehicle_year,

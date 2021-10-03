@@ -81,6 +81,8 @@
                           var claim_status = CurrentRecord.val().claim_status;
                           var prediction = CurrentRecord.val().prediction;
                           var claim_number=CurrentRecord.key;
+
+                          console.log(prediction)
                           
                         //   claim_status = "prediction"
                           AddItemstoTable(claim_number,
@@ -89,7 +91,6 @@
                             accidence_location,
                             car_image_url,
                             invoice_image_url,
-                            claim_number, 
                             claim_status, 
                             prediction);
     
@@ -112,14 +113,30 @@
                 var a1 =document.createElement('a'); 
                 var link1 = document.createTextNode(claim_number);
                 a1.appendChild(link1); 
-                
                 a1.href ="{% url 'index' %}" + claim_number ;
+
+                var btn1 = document.createElement("BUTTON");
+                btn1.classList.add("btn")
+
+                if (claim_status == "approved"){
+                    btn1.classList.add("btn-success")
+                } else {
+                    btn1.classList.add("btn-warning")
+                }
+                btn1.innerHTML = claim_status
+                
+                var btn2 = document.createElement("BUTTON");
+                btn2.classList.add("btn")
+                btn2.classList.add("btn-primary")
+                btn2.innerHTML = "assign"
+
                 td1.appendChild(a1);
                 td2.innerHTML=type_of_accidence;
                 td3.innerHTML=date_of_accidence;
-                
-                td4.innerHTML=claim_status;
+                td4.appendChild(btn1);
                 td5.innerHTML=prediction;
+                td6.appendChild(btn2);
+
                 tbody.appendChild(trow);
                 trow.appendChild(td1);
                 trow.appendChild(td2);

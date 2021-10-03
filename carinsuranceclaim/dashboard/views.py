@@ -44,6 +44,13 @@ def details(request,claim_no):
     DATE_OF_=database.child('claim').child('-Mkv6-mXxnfNWYTEfMpq').child('invoice_url').get().val()
     claim_data = database.child('claim').child(claim_no).get().val()
 
+    # similar_claim = database.child('claim').child(similar_claim).get().val()
+
+    # if (similar_claim == null) {
+    #   imageList = get_url("invoice_url")
+    #   result["max_index"], max_value = similarity(claim_data)
+    # }
+
     return render(request,"dashboard/details.html",{
       "ClaimNo":ClaimNo,
       "NAME":NAME,

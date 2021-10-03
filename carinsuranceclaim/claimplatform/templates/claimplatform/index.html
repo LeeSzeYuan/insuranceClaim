@@ -54,8 +54,8 @@
                 <form class="f1" method="post" action="/claimplatform/post_create/"  enctype="multipart/form-data">	
                     {% csrf_token %}
 
-                    <h3>Claim for car insurance</h3>
-                    <p>Fill in the form to get instant claim</p>
+                    <h3>Hi, {{ username }}</h3>
+                    <p>Fill in the form to get car insurance claim</p>
             
                     <div class="f1-steps">
 
@@ -119,17 +119,9 @@
                             <div class="serv">
                                 <label for="What Happened?">Choose a type of car accidence:</label>
                                 <select id="cars" name="cars" class="form-select">
-                                    <option value="Collision With another vehicle">Collision With another vehicle</option>
-                                    <option value="Collision with 2+ vehicle">Collision with 2+ vehicle</option>
-                                    <option value="Theft">Theft</option>
-                                    <option value="Fire">Fire</option>
-                                    <option value="Loss of control">Loss of control</option>
-                                    <option value="object/animal collision">object/animal collision</option>
-                                    <option value="broken glass">broken glass</option>
-                                    <option value="Wheather Damage">Wheather Damage</option>
-                                    <option value="Vandalism">Vandalism</option>
-                                    <option value="Collision with pedestrain">Collision with pedestrain</option>
-                                    <option value="Damage from cargo">Damage from cargo</option>
+                                    <option value="Damaged Bumper">Damaged Bumper</option>
+                                    <option value="Damaged Windshield">Damaged Windshield</option>
+                                    <option value="Damaged Door">Damaged Door</option>
                                 </select>
                             </div>
                             <br><br>
@@ -211,6 +203,7 @@
                             <input type="hidden" name="invoice_url" id="invoice_url">
                             <img id="invoice_img" class="img-thumbnail" src="#" alt="invoice_img" style="display: none;"/><br>
                             <button type="button" class="btn btn-warning btn-sm" onclick="upload_invoice_image()" >Upload</button>
+                            <input type="hidden" name="username" id="username" value={{username}}>
                         
                             <div class="f1-buttons">
                                 <button type="button" class="btn btn-previous">Previous</button>

@@ -26,6 +26,30 @@
     .row{
         padding: 20px;
     }
+    .btn-circle.btn-sm {
+        width: 30px;
+        height: 30px;
+        padding: 6px 0px;
+        border-radius: 15px;
+        font-size: 8px;
+        text-align: center;
+    }
+    .btn-circle.btn-md {
+        width: 50px;
+        height: 50px;
+        padding: 7px 10px;
+        border-radius: 25px;
+        font-size: 10px;
+        text-align: center;
+    }
+    .btn-circle.btn-xl {
+        width: 70px;
+        height: 70px;
+        padding: 10px 16px;
+        border-radius: 35px;
+        font-size: 12px;
+        text-align: center;
+    }
 </style>
 <body>
     <nav class="navbar  navbar-dark bg-dark" style="border: 0px; margin: 0px;">
@@ -50,9 +74,175 @@
                 </p>
                 <p>  <strong>INSURANCE ID:</strong><br>{{INSURANCENUMBER}}
                 </p> 
+                <hr>
+                <p><strong>Fradulent Score</strong></p> 
+                <button class="btn btn-danger btn-circle btn-xl" id="fraud_score" style="font-size: 30px;">0</button>
             </div>
 
-            <div class="col-8" style="background-color:white ;">
+            <div class="col-10" style="background-color:white ;">
+                
+                <div class="row">
+                    <h1>Car Damage Analysis</h1>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                              <th scope="col">Image Uploaded</th>
+                              <th scope="col">Damage Reported</th>
+                              <th scope="col">A.I. Analysis</th>
+                              <th scope="col">Result</th>
+                            </tr>
+                          </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="{{claim_data.car_url}}" target="_blank"><img src="{{claim_data.car_url}}" alt="" class="image-fluid" style="display: block; width: 100%; height: 100%; "></a> 
+                                    <!-- style="width: 30%; height: 30%;" -->
+                                </td>
+                                <td>
+                                    <p>{{claim_data.type_of_accidence}}</p>
+                                </td>
+                                <td>
+                                    <p>{{claim_data.prediction}}</p>
+                                </td>
+                                <td>
+                                    {% if claim_data.type_of_accidence == claim_data.prediction %}
+                                    <button class="btn btn-success">SAFE</button>
+                                    {% else %}
+                                    <button class="btn btn-warning" id="fraud1">FRAUD</button>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="row">
+                    <h1>Web Image Detection</h1>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                              <th scope="col">Image Uploaded</th>
+                              <th scope="col">Is Image from Internet?</th>
+                              <th scope="col">Result</th>
+                            </tr>
+                          </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="{{claim_data.car_url}}" target="_blank"><img src="{{claim_data.car_url}}" alt="" class="image-fluid" style="display: block; width: 100%; height: 100%;"></a> 
+                                </td>
+                                <td>
+                                    {% if claim_data.similar_image.link %}
+                                        <p> The Image seem to be found on the internet</p>
+                                        <a href="https://google.com{{claim_data.similar_image.link}}"  target="_blank">LINK</a>
+                                    {% else %}
+                                        <p>No similar image is found on the internet</p>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if claim_data.similar_image.link == null %}
+                                        <button class="btn btn-success">SAFE</button>
+                                        <!-- <input type="submit" value="1" name="something" class="btn btn-success"> -->
+                                    {% else %}
+                                        <button class="btn btn-warning" id="fraud2">FRAUD</button>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="row">
+                    <h1>OCR Analysis</h1>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                              <th scope="col">Image Uploaded</th>
+                              <th scope="col">OCR Analysis</th>
+                              <th scope="col">Similar Image in Database</th>
+                              <th scope="col">Result</th>
+                            </tr>
+                          </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="{{claim_data.invoice_url}}" target="_blank"><img src="{{claim_data.invoice_url}}" alt="" class="image-fluid" style="display:block; width: 100%; height: 100%;"></a> 
+                                </td>
+                                <td>
+                                    <ul>
+                                        <li><p class="card-text"><strong>Bill To Name:</strong> &nbsp {{ocr_result.bill_to_name}}</p></li>
+                                    </ul>
+                                    <ul>
+                                        <li><p class="card-text"><strong>Bill To Address:</strong> &nbsp {{ocr_result.bill_to_address}}</p></li>
+                                    </ul>
+                                    <ul>
+                                        <li><p class="card-text"><strong>Total Amount:</strong> &nbsp {{ocr_result.total}}</p></li>
+                                    </ul>
+                                    <ul>
+                                        <li><p class="card-text"><strong>Repairer Name:</strong> &nbsp {{ocr_result.vendor.raw_name}}</p></li>
+                                    </ul>
+                                    <ul>
+                                        <li><p class="card-text"> <strong>Repairer Address:</strong>&nbsp {{ocr_result.vendor.address}}</p></li>
+                                    </ul>
+                                    <ul>
+                                        <li><p class="card-text"><strong>Repairer Contact:</strong> &nbsp {{claim_data.ocr_result.vendor.email}}</p></li>
+                                    </ul>
+                                </td>
+                                <td>
+                                    if image is reused, show the link of the image and claim number
+                                </td>
+                                <td>
+                                    {% if claim_data.similar_image.link == null %}
+                                        <button class="btn btn-success">SAFE</button>
+                                        <!-- <input type="submit" value="1" name="something" class="btn btn-success"> -->
+                                    {% else %}
+                                        <button class="btn btn-warning" id="fraud3">FRAUD</button>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="row">
+                    <h1>Social Connection Analysis</h1>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                              <th scope="col">Analysis</th>
+                              <th scope="col">Result</th>
+                            </tr>
+                          </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    {% if claim_data.insurance_id == "-Ml0kuzGVhMz_LiTy9Qj" %}
+                                        <p>The Claim detail has following suspicious</p>
+                                        <strong>Similar Claim found on a social connection</strong>
+                                        <ul>
+                                            <li>Name: <strong>Jane</strong></li> 
+                                            <li>Similar Address: <strong>577,Taman Seri Kota,06600,Jalan Kuala Kedah,Alor Setar</strong></li> 
+                                        </ul>
+                                    {% else %}
+                                        No Suspicion Found
+                                    {% endif %}
+                                </td>
+                                
+                                <td>
+                                    {% if claim_data.insurance_id == "-Ml0kuzGVhMz_LiTy9Qj" %}
+                                        <button class="btn btn-warning" id="fraud4">FRAUD</button>
+                                        <!-- <input type="submit" value="1" name="something" class="btn btn-success"> -->
+                                    {% else %}
+                                        <button class="btn btn-success">SAFE</button>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <hr><hr><hr>
+                <h1>Claim Details</h1>
                 <div class="row">
                     <div class="row ">
                         <div class="col-sm-6">
@@ -113,75 +303,38 @@
                     </div>
                 </div>
                 
-                <div class="row">
-                    <h1>Web Image Detection</h1>
-                    <table class="table table-bordered">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <a href="{{claim_data.car_url}}"><img src="{{claim_data.car_url}}" alt="" class="image-fluid" style="width: 30%; height: 30%;"></a> 
-                                </td>
-                                <td>
-                                    {% if claim_data.similar_image.link %}
-                                        <p> The Image seem to be found on the internet</p>
-                                        <a href="https://google.com{{claim_data.similar_image.link}}">LINK</a>
-                                    {% else %}
-                                        <p>No similar image is found on the internet</p>
-                                    {% endif %}
-                                </td>
-                                <td>
-                                    Prediction Result:
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="row">
-                    <h1>OCR Analysis</h1>
-                    <table class="table table-bordered">
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <a href="{{claim_data.invoice_url}}"><img src="{{claim_data.invoice_url}}" alt="" class="image-fluid" style="width: 30%; height: 30%;"></a> 
-                                </td>
-                                <td>
-                                    <ul>
-                                        <li><p class="card-text"><strong>Bill To Name:</strong> &nbsp {{ocr_result.bill_to_name}}</p></li>
-                                    </ul>
-                                    <ul>
-                                        <li><p class="card-text"><strong>Bill To Address:</strong> &nbsp {{ocr_result.bill_to_address}}</p></li>
-                                    </ul>
-                                    <ul>
-                                        <li><p class="card-text"><strong>Total Amount:</strong> &nbsp {{ocr_result.total}}</p></li>
-                                    </ul>
-                                    <ul>
-                                        <li><p class="card-text"><strong>Repairer Name:</strong> &nbsp {{ocr_result.vendor.raw_name}}</p></li>
-                                    </ul>
-                                    <ul>
-                                        <li><p class="card-text"> <strong>Repairer Address:</strong>&nbsp {{ocr_result.vendor.address}}</p></li>
-                                    </ul>
-                                    <ul>
-                                        <li><p class="card-text"><strong>Repairer Contact:</strong> &nbsp {{claim_data.ocr_result.vendor.email}}</p></li>
-                                    </ul>
-                                </td>
-                                <td>
-                                    if image is reused, show the link of the image and claim number
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="row">
-                    <h1>Web Image Detection</h1>
-                    fraud result
-                </div>
-                
             </div>
             <div class="col-2" style="background-color: white;"></div> 
         </div>
-        
+        <script>
+            window.onload = () => {
+                fraud_score = document.getElementById("fraud_score");
+                fraud1 = document.getElementById("fraud1");
+                fraud2 = document.getElementById("fraud2");
+                fraud3 = document.getElementById("fraud3");
+                fraud4 = document.getElementById("fraud4");
+                score = 0;
+                if (fraud1) {
+                    score += 1
+                }
+                if (fraud2) {
+                    score += 1
+                }
+                if (fraud3) {
+                    score += 1
+                }
+                if (fraud4) {
+                    score += 1
+                }
+                console.log(score);
+
+                score = (score/4) * 100;
+                if (score === 100){
+                    score = 99;
+                }
+                fraud_score.innerHTML = score;
+            }
+        </script>
     </div>
 </body>
 </html>
