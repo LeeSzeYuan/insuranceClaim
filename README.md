@@ -72,15 +72,15 @@
 
 
 The problems that faced by insurance company:
-Policyholder & insurers find car insurance claims processing time consuming& inefficient.
-Traditional Claim Processing is prone to human error.
+1.Policyholder & insurers find car insurance claims processing time consuming& inefficient.
+2.Traditional Claim Processing is prone to human error.
 
 
 
 We aim to offer an mobile app or web application to provide a digital solution for car insurance claim.
-* A Portal to let policy holder (Client) to submit the claim 
+* A portal to let policy holder (Client) to submit the claim 
 * The Machine Learning process the claim and detect faults 
-* Approved the claim after checking that the claim is fulfilled the criteria
+* Approved the claim after checking that the claim is fulfilled the criteria in a short period of time, e.g 1 hour
 
 
 
