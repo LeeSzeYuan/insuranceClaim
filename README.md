@@ -22,7 +22,7 @@
     An Automate Insurance Claim Platform 
     <br />
     <br />
-    <a href="hhttps://github.com/LeeSzeYuan/insuranceClaim">View Demo</a>
+    <a href="https://github.com/LeeSzeYuan/insuranceClaim">View Demo</a>
     ·
     <a href="https://github.com/LeeSzeYuan/insuranceClaim/issues">Report Bug</a>
     ·
@@ -65,7 +65,10 @@
 ## About The Project
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
-<img src="insuranceClaim/Screenshot 2022-03-26 at 12.44.37 AM.png">
+ <a href="https://github.com/LeeSzeYuan/insuranceClaim">
+   <img src="insuranceClaim/Screenshot 2022-03-26 at 12.44.37 AM.png">
+  </a>
+
 
 
 
