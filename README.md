@@ -72,8 +72,8 @@
 
 
 The problems that faced by insurance company:
-*Policyholder & insurers find car insurance claims processing time consuming& inefficient.
-*Traditional Claim Processing is prone to human error.
+* Policyholder & insurers find car insurance claims processing time consuming& inefficient.
+* Traditional Claim Processing is prone to human error.
 
 
 
