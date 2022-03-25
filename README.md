@@ -16,7 +16,7 @@
 <div align="center">
 
 
-  <h3 align="center">DClaim</h3>
+  <h3 align="center">DClaim(Digitalised Claim Management System)</h3>
 
   <p align="center">
     An Automate Insurance Claim Platform 
