@@ -66,17 +66,20 @@
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 <img src="insuranceClaim/Screenshot 2022-03-26 at 12.44.37 AM.png">
-<img src="insuranceClaim/Screenshot 2022-03-26 at 12.44.37 AM.png">
 
 
-Since we are faced with the problem that NTU does not have one systematic platform (Web/App) which has access to all CCAs’ contact info and registration links. CCAs cannot publicize their club activities efficiently. In addition, students are unable to attend face-to-face briefing sessions of CCA clubs due to the Covid-19 situation while online sharing is ineffective and not widespread.
 
-We aim to offer an APP to have the following features:
-* All upcoming events in ONE page
-* All club information in ONE list
-* ONE-button event and club registration 
-* One personalised timetable of registered activities schedule
-* Club committee perform management in ONE platform 
+The problems that faced by insurance company:
+Policyholder & insurers find car insurance claims processing time consuming& inefficient.
+Traditional Claim Processing is prone to human error.
+
+
+
+We aim to offer an mobile app or web application to provide a digital solution for car insurance claim.
+* A Portal to let policy holder (Client) to submit the claim 
+* The Machine Learning process the claim and detect faults 
+* Approved the claim after checking that the claim is fulfilled the criteria
+
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
