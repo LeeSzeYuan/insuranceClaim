@@ -65,9 +65,8 @@
 ## About The Project
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
- <a href="https://github.com/LeeSzeYuan/insuranceClaim">
-   <img src="insuranceClaim/Screenshot 2022-03-26 at 12.44.37 AM.png">
-  </a>
+   <img src="Screenshot 2022-03-26 at 12.44.37 AM.png">
+
 
 
 
