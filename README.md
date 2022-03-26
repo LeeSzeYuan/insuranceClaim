@@ -67,7 +67,7 @@
    <img src="Screenshot 2022-03-26 at 12.44.37 AM.png">
    <img src="DClaim Pic.png">
    
-Did you encounter a situation where you had to submit car insurance due to car insurance? The insurance companies have to conduct an extensive investigation into a car accident to determine the fault and liability, but this is sometimes prone to human error. Thus, most policyholders find the insurance company takes too long to process the claim and get the pay out.
+Did you encounter a situation where you had to submit car insurance due to car accidence? The insurance companies have to conduct an extensive investigation into a car accident to determine the fault and liability, but this is sometimes prone to human error. Thus, most policyholders find the insurance company takes too long to process the claim and get the pay out.
 
 Let me summarize the problem that encountered by insurance company:
 * Policyholder find car insurance claims processing time consuming& inefficient.
