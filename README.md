@@ -82,7 +82,7 @@ Thus,we aim to offer an mobile app or web application to provide a digital solut
 <br/>
 
 <img src="Screenshot 2022-03-26 at 12.44.37 AM.png">
-<p align="center">This is the portal for policy holder to submit claim</p>
+<p align="center">This is the portal for policyholder to submit claim</p>
 <br/>
 <img src="DClaim Pic.png">
 <p align="center"> The analysis report of the machine learning for the car insurance claim that submitted by policyholder</p>
