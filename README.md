@@ -64,8 +64,6 @@
 ## About The Project
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
-   <img src="Screenshot 2022-03-26 at 12.44.37 AM.png">
-   <img src="DClaim Pic.png">
    
 Did you encounter a situation where you had to submit car insurance due to car accidence? The insurance companies have to conduct an extensive investigation into a car accident to determine the fault and liability, but this is sometimes prone to human error. Thus, most policyholders find the insurance company takes too long to process the claim and get the pay out.
 
@@ -80,6 +78,14 @@ Thus,we aim to offer an mobile app or web application to provide a digital solut
 * The Machine Learning in the back-end process the claim and detect faults.
 * Approved the claim after confirm that the claim is fulfilled the criteria.
 * The machine learning could filter out the fradulent claim for insurance company. 
+
+<br/>
+
+<img src="Screenshot 2022-03-26 at 12.44.37 AM.png">
+<p align="center">This is the portal for policy holder to submit claim</p>
+<br/>
+<img src="DClaim Pic.png">
+<p align="center"> The analysis report of the machine learning for the car insurance claim that submitted by policyholder</p>
 
 
 
