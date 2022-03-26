@@ -60,27 +60,26 @@
 </details>
 
 
-
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
    <img src="Screenshot 2022-03-26 at 12.44.37 AM.png">
+   <img src="DClaim Pic.png">
+   
+Did you encounter a situation where you had to submit car insurance due to car insurance? The insurance companies have to conduct an extensive investigation into a car accident to determine the fault and liability, but this is sometimes prone to human error. Thus, most policyholders find the insurance company takes too long to process the claim and get the pay out.
+
+Let me summarize the problem that encountered by insurance company:
+* Policyholder find car insurance claims processing time consuming& inefficient.
+* Traditional claim processing is prone to human error.
 
 
 
-
-
-The problems that faced by insurance company:
-* Policyholder & insurers find car insurance claims processing time consuming& inefficient.
-* Traditional Claim Processing is prone to human error.
-
-
-
-We aim to offer an mobile app or web application to provide a digital solution for car insurance claim.
-* A portal to let policy holder (Client) to submit the claim 
-* The Machine Learning process the claim and detect faults 
-* Approved the claim after checking that the claim is fulfilled the criteria in a short period of time, e.g 1 hour
+Thus,we aim to offer an mobile app or web application to provide a digital solution for car insurance claim.
+* A portal to let policyholder to submit the claim 
+* The Machine Learning in the back-end process the claim and detect faults.
+* Approved the claim after confirm that the claim is fulfilled the criteria.
+* The machine learning could filter out the fradulent claim for insurance company. 
 
 
 
