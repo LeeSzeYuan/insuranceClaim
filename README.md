@@ -147,8 +147,9 @@ Don't forget to give the project a star! Thanks again!
 ## Contact
 
 Lee Sze Yuan - [@LeeSzeYuan](https://www.linkedin.com/in/sze-yuan-lee/) - lsyuan1029@gmail.com
+Khor Chin Yi - [@CKHOR002](https://www.linkedin.com/in/khor-chin-yi-002/) - cykhor11@gmail.com
 
-Project Link: [https://github.com/jason45992/ccaexplorer](https://github.com/jason45992/ccaexplorer)
+Project Link: [https://github.com/LeeSzeYuan/insuranceClaim](https://github.com/LeeSzeYuan/insuranceClaim)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
